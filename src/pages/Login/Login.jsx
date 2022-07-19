@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import styles from '../../styles/Login.module.css';
 import { Link, useNavigate } from 'react-router-dom';
-import useFirebaseCtx from '../../store/FirebaseCtx';
+import useAuthCtx from '../../store/AuthContext';
 
 const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState(null);
-	const ctx = useFirebaseCtx();
-	const { login, setUser } = ctx;
+	const { login } = useAuthCtx();
 	const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const res = await login(email, password);
+			await login(email, password);
 			navigate('/gallery');
 			setEmail('');
 			setPassword('');

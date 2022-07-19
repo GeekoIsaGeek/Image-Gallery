@@ -7,13 +7,14 @@ import Gallery from './pages/Gallery/Gallery';
 import Profile from './pages/Profile/Profile';
 import Protected from './components/ProtectedRoutes';
 import Unauthorized from './components/Unauthorized';
+import Main from './pages/Main/Main';
 
 function App() {
 	return (
 		<div className='App'>
 			<Header />
 			<Routes>
-				<Route path='/' element={<></>} />
+				<Route path='/' element={<Main />} />
 				<Route element={<Unauthorized />}>
 					<Route path='/login' element={<Login />} />
 					<Route path='/registration' element={<Registration />} />

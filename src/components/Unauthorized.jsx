@@ -1,10 +1,10 @@
 import React from 'react';
-import useFirebaseCtx from '../store/FirebaseCtx';
+import useAuthCtx from '../store/AuthContext';
 import { Navigate, Outlet } from 'react-router-dom';
 
 const Unauthorized = () => {
-	const { user } = useFirebaseCtx();
-	return user ? <Navigate to='/profile' replace /> : <Outlet />;
+	const { currentUser } = useAuthCtx();
+	return currentUser ? <Navigate to='/profile' replace /> : <Outlet />;
 };
 
 export default Unauthorized;
