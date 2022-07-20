@@ -8,9 +8,15 @@ const Main = () => {
 	const { currentUser } = useAuthCtx();
 	const textareaRef = useRef();
 
-	const sendEmail = async (e) => {
+	const sendEmail = (e) => {
 		e.preventDefault();
-		await emailjs.sendForm('service_32sterg', 'template_ufacz7h', e.target, 'k2HybejYeHJfMUwhu');
+		console.log(currentUser.displayName, currentUser.email);
+		emailjs.sendForm(
+			process.env.REACT_APP_EMAILJS_SERVICE_ID,
+			process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+			e.target,
+			process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+		);
 		e.target.reset();
 	};
 
