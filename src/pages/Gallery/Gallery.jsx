@@ -20,13 +20,10 @@ const Gallery = () => {
 		);
 		await uploadBytes(imageRef, selectedImg);
 		const url = await getDownloadURL(imageRef);
-		setImages(images.concat(url));
+		setImages(images.concat({ url }));
 
 		try {
-			const imagesRef = await addDoc(collection(db, 'users', `${currUser.uid}`, 'images'), {
-				url,
-			});
-			console.log(imagesRef);
+			await addDoc(collection(db, 'users', `${currUser.uid}`, 'images'), { url });
 		} catch (err) {
 			console.log(err);
 		}
@@ -38,12 +35,11 @@ const Gallery = () => {
 			const tempArr = [];
 			docs.forEach((doc) => {
 				tempArr.push({ url: doc.data().url });
-				console.log(tempArr);
 			});
 			setImages(tempArr);
 		};
 		getImages();
-	}, []);
+	}, [currUser.uid]);
 
 	return (
 		<div className={styles.Wrapper}>
