@@ -1,0 +1,87 @@
+.Wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100vw;
+	min-height: 80vh;
+	gap: 15px;
+	text-align: center;
+}
+
+.Wrapper h1,
+h2 {
+	color: white;
+	text-shadow: 1px 1px 1.5px rgb(59, 59, 59);
+}
+
+.Signup {
+	padding: 5px 20px;
+	border: 2px solid white;
+	color: white;
+	border-radius: 5px;
+	margin-top: 20px;
+	text-shadow: 1px 1px 1px rgb(59, 59, 59);
+	font-size: 1.1rem;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	transition: background 0.2s linear, color 0.2s linear;
+}
+.Signup:hover {
+	background-color: #e55e5e;
+}
+.Wrapper form {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	align-items: center;
+	justify-content: center;
+}
+.Wrapper form input {
+	padding: 5px 30px;
+	font-size: 1rem;
+	border-radius: 5px;
+	border: none;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	transition: background 0.2s linear;
+}
+.Wrapper form input:hover {
+	cursor: pointer;
+	background-color: #fcafaf;
+}
+
+textarea {
+	width: 40vw;
+	height: 200px;
+	resize: none;
+	outline: none;
+	padding: 5px;
+	font-size: 20px;
+	background-color: #fdd1d1;
+	border-radius: 5px;
+	border: none;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.Github {
+	font-size: 2rem;
+	color: white;
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+}
+
+@media screen and (max-width: 1220px) {
+	.Wrapper h1,
+	h2 {
+		font-size: 24px;
+	}
+}
+@media screen and (max-width: 960px) {
+	.Wrapper h1,
+	h2 {
+		font-size: 18px;
+	}
+	.Signup {
+		font-size: 14px;
+		padding: 5px 12px;
+	}
+}

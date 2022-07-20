@@ -14,6 +14,10 @@ a {
 	width: 100vw;
 	background-color: #e5e5e5;
 	overflow-x: hidden;
+	background-color: salmon;
+}
+.App::-webkit-scrollbar {
+	display: none;
 }
 .App-header {
 	height: 60px;
@@ -83,10 +87,11 @@ input[type='file'] button {
 	width: 100vw;
 	height: 100vh;
 	overflow: hidden;
+	z-index: 11;
 	display: none;
 	justify-content: center;
 	align-items: center;
-	background-color: rgba(0, 0, 0, 0.877);
+	background-color: rgba(0, 0, 0, 0.863);
 }
 .Overlay img {
 	width: 60vw;
@@ -98,4 +103,11 @@ input[type='file'] button {
 }
 .Overlay.active {
 	display: flex;
+}
+
+@media screen and (max-width: 768px) {
+	.Overlay img {
+		width: 100vw;
+		height: 70vh;
+	}
 }

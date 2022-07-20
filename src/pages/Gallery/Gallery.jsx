@@ -3,7 +3,7 @@ import styles from '../../styles/Gallery.module.css';
 import { BiImageAdd } from 'react-icons/bi';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage, auth } from '../../Firebase-config';
-import { RiFullscreenExitFill } from 'react-icons/ri';
+import { AiOutlineFullscreenExit } from 'react-icons/ai';
 
 const Gallery = () => {
 	const [images, setImages] = useState([]);
@@ -15,7 +15,7 @@ const Gallery = () => {
 		const selectedImg = e.target.files[0];
 		const imageRef = ref(
 			storage,
-			`users/${currUser.displayName}-${currUser.uid}/${selectedImg.name}`
+			`users/${currUser.displayName}-${currUser.uid}/gallery/${selectedImg.name}`
 		);
 		await uploadBytes(imageRef, selectedImg);
 		const url = await getDownloadURL(imageRef);
@@ -29,7 +29,7 @@ const Gallery = () => {
 		<div className={styles.Wrapper}>
 			<div className={styles.Upload}>
 				<span>
-					<BiImageAdd className={styles.addLogo} /> Upload
+					<BiImageAdd className={styles.addLogo} />
 				</span>
 				<input type='file' accept='.jpg,.jpeg,.png,.webp' onChange={handleSelect} />
 			</div>
@@ -47,7 +47,7 @@ const Gallery = () => {
 				})}
 			</ul>
 			<div className={selectedImg ? 'Overlay active' : 'Overlay'}>
-				<RiFullscreenExitFill className={styles.Exit} onClick={() => setSelectedImg(null)} />
+				<AiOutlineFullscreenExit className={styles.Exit} onClick={() => setSelectedImg(null)} />
 				<img src={selectedImg} alt='selected-img' />
 			</div>
 		</div>
