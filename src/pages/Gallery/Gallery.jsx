@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import styles from '../../styles/Gallery.module.css';
 import { BiImageAdd } from 'react-icons/bi';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { storage, auth } from '../../Firebase-config';
+import { storage, auth, db } from '../../Firebase-config';
 import { AiOutlineFullscreenExit } from 'react-icons/ai';
+import { collection, addDoc, getDocs } from 'firebase/firestore';
 
 const Gallery = () => {
 	const [images, setImages] = useState([]);
@@ -20,9 +21,28 @@ const Gallery = () => {
 		await uploadBytes(imageRef, selectedImg);
 		const url = await getDownloadURL(imageRef);
 		setImages(images.concat(url));
+
+		try {
+			const imagesRef = await addDoc(collection(db, 'users', `${currUser.uid}`, 'images'), {
+				url,
+			});
+			console.log(imagesRef);
+		} catch (err) {
+			console.log(err);
+		}
 	};
 	useEffect(() => {
-		const pathRef = (storage, `${currUser.displayName}-${currUser.uid}`);
+		const getImages = async () => {
+			const userImagesRef = await collection(db, `users/${currUser.uid}/images`);
+			const docs = await getDocs(userImagesRef);
+			const tempArr = [];
+			docs.forEach((doc) => {
+				tempArr.push({ url: doc.data().url });
+				console.log(tempArr);
+			});
+			setImages(tempArr);
+		};
+		getImages();
 	}, []);
 
 	return (
@@ -34,11 +54,11 @@ const Gallery = () => {
 				<input type='file' accept='.jpg,.jpeg,.png,.webp' onChange={handleSelect} />
 			</div>
 			<ul className={styles.Gallery}>
-				{images.map((url) => {
+				{images.map((obj, i) => {
 					return (
-						<li>
+						<li key={i}>
 							<img
-								src={url}
+								src={obj.url}
 								alt='gallery-item'
 								onClick={(e) => setSelectedImg(e.target.src)}
 							/>
