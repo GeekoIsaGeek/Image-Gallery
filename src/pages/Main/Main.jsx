@@ -10,13 +10,8 @@ const Main = () => {
 
 	const sendEmail = async (e) => {
 		e.preventDefault();
-		const res = await emailjs.sendForm(
-			'service_32sterg',
-			'template_ufacz7h',
-			e.target,
-			'k2HybejYeHJfMUwhu'
-		);
-		console.log(res);
+		await emailjs.sendForm('service_32sterg', 'template_ufacz7h', e.target, 'k2HybejYeHJfMUwhu');
+		e.target.reset();
 	};
 
 	if (currentUser) {
