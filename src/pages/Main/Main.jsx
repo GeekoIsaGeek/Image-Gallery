@@ -39,7 +39,7 @@ const Main = () => {
 	} else
 		return (
 			<div className={styles.Wrapper}>
-				<h1>Hey, I heard that you are looking for something to store your images</h1>
+				<h1>Hey, I heard that you are looking for a platform to store your images</h1>
 				<h1>
 					and you know what? <span> I offer you my app for free</span>{' '}
 				</h1>
