@@ -23,7 +23,7 @@ export const AuthCtxProvider = ({ children }) => {
 
 		let url;
 		if (avatar) {
-			const imageRef = ref(storage, `users/${username}/avatar`);
+			const imageRef = ref(storage, `users/${username}-${auth.currentUser.uid}/avatar`);
 			await uploadBytes(imageRef, avatar);
 			url = await getDownloadURL(imageRef);
 			setAvatarUrl(url);

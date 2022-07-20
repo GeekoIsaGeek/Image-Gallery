@@ -13,6 +13,7 @@ a {
 	height: 100vh;
 	width: 100vw;
 	background-color: #e5e5e5;
+	overflow-x: hidden;
 }
 .App-header {
 	height: 60px;
@@ -48,6 +49,7 @@ a {
 	top: 42px;
 	right: -20px;
 	font-weight: bold;
+	z-index: 10;
 	display: none;
 	flex-direction: column;
 	padding: 0px 10px 10px 10px;
@@ -73,4 +75,27 @@ a {
 }
 input[type='file'] button {
 	background-color: red;
+}
+.Overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.877);
+}
+.Overlay img {
+	width: 60vw;
+	height: 38vw;
+	border-radius: 10px;
+	object-fit: cover;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+		rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+.Overlay.active {
+	display: flex;
 }

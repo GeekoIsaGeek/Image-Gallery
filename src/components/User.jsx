@@ -21,9 +21,6 @@ const User = () => {
 				<h4 className={styles.Username}>{userName || 'user'}</h4>
 				<ul className={!show ? 'Nav' : 'Nav active'}>
 					<li>
-						<Link to='/profile'>Profile</Link>
-					</li>
-					<li>
 						<Link to='/gallery'>Gallery</Link>
 					</li>
 					<Logout />

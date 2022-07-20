@@ -4,7 +4,6 @@ import Header from './components/Header';
 import Login from './pages/Login/Login';
 import Registration from './pages/Registration/Registration';
 import Gallery from './pages/Gallery/Gallery';
-import Profile from './pages/Profile/Profile';
 import Protected from './components/ProtectedRoutes';
 import Unauthorized from './components/Unauthorized';
 import Main from './pages/Main/Main';
@@ -19,10 +18,8 @@ function App() {
 					<Route path='/login' element={<Login />} />
 					<Route path='/registration' element={<Registration />} />
 				</Route>
-
 				<Route element={<Protected />}>
 					<Route path='/gallery' element={<Gallery />} />
-					<Route path='/profile' element={<Profile />} />
 				</Route>
 				<Route path='*' element={<Navigate to='/' replace />} />
 			</Routes>
