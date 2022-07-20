@@ -10,7 +10,6 @@ const Main = () => {
 
 	const sendEmail = (e) => {
 		e.preventDefault();
-		console.log(currentUser.displayName, currentUser.email);
 		emailjs.sendForm(
 			process.env.REACT_APP_EMAILJS_SERVICE_ID,
 			process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
