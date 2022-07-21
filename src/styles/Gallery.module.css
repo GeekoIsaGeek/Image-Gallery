@@ -10,7 +10,6 @@
 	margin-top: 100px;
 	padding-bottom: 100px;
 	display: grid;
-	justify-items: center;
 	grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
 	list-style: none;
 	gap: 20px;
@@ -86,9 +85,15 @@
 	color:indianred;
 	cursor: pointer;
 }
+@media screen and (max-width:960px){
+	.Gallery li img{
+		width: 100%;
+	}
+}
 @media screen and (max-width: 530px) {
 	.Gallery {
-		justify-content: center;
+		justify-items: center;
+
 	}
 	.Gallery li img {
 		width: 60vw;

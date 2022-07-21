@@ -85,3 +85,15 @@ textarea {
 		padding: 5px 12px;
 	}
 }
+@media screen and (max-width: 420px) {
+	.Wrapper {
+		gap: 5px;
+	}
+	Textarea {
+		width: 80vw;
+		font-size: 1rem;
+	}
+	.FeedbackHeading {
+		font-size: 1.5rem !important;
+	}
+}

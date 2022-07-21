@@ -22,7 +22,7 @@ const Main = () => {
 	if (currentUser) {
 		return (
 			<div className={styles.Wrapper}>
-				<h1>Give me feedback 👻</h1>
+				<h1 className={styles.FeedbackHeading}>Give me feedback 👻</h1>
 				<form onSubmit={sendEmail}>
 					<input
 						type='text'
@@ -46,7 +46,7 @@ const Main = () => {
 			<div className={styles.Wrapper}>
 				<h1>Hey, I heard that you are looking for a platform to store your images</h1>
 				<h1>
-					and you know what? <span> I offer you my app for free</span>{' '}
+					and you know what? <span> I offer you to use my app for free</span>{' '}
 				</h1>
 				<h2>What are you waiting for? 🥱</h2>
 				<Link to='/registration' className={styles.Signup}>

@@ -114,6 +114,9 @@ input[type='file'] button {
 @media screen and (max-width: 420px) {
 	.Overlay img {
 		width: 100vw;
-		height: 40vh;
+		height: 60vh;
+	}
+	.Overlay {
+		background-color: rgba(0, 0, 0, 0.911);
 	}
 }

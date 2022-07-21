@@ -56,3 +56,20 @@
 .Signup:hover {
 	background-color: rgb(202, 223, 223);
 }
+
+@media screen and (max-width: 420px) {
+	.Wrapper > form {
+		padding: 30px;
+	}
+	.Email,
+	.Password {
+		font-size: 1rem;
+	}
+	.Signup,
+	.Login {
+		font-size: 12px;
+	}
+	.Buttons {
+		gap: unset;
+	}
+}
