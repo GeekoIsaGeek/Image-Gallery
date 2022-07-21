@@ -62,7 +62,7 @@
 	background-color: #4e7070;
 }
 .Exit {
-	font-size: 2.7rem;
+	font-size: 2.5rem;
 	position: absolute;
 	right: 15px;
 	top: 15px;
@@ -73,27 +73,26 @@
 	cursor: pointer;
 	color: rgb(88, 88, 88);
 }
-.Remove{ 
+.Remove {
 	color: rgb(189, 189, 189);
 	font-size: 1.75rem;
 	position: absolute;
-	bottom:15px;
+	bottom: 15px;
 	right: 15px;
-	transition: .25s ease-out;
+	transition: 0.25s ease-out;
 }
-.Remove:hover{
-	color:indianred;
+.Remove:hover {
+	color: indianred;
 	cursor: pointer;
 }
-@media screen and (max-width:960px){
-	.Gallery li img{
+@media screen and (max-width: 960px) {
+	.Gallery li img {
 		width: 100%;
 	}
 }
 @media screen and (max-width: 530px) {
 	.Gallery {
 		justify-items: center;
-
 	}
 	.Gallery li img {
 		width: 60vw;
@@ -101,5 +100,9 @@
 	}
 	.Upload {
 		right: 5px;
+	}
+	.Remove {
+		top: 20px;
+		left: 15px;
 	}
 }

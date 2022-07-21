@@ -13,21 +13,21 @@ const Gallery = () => {
 
 	const currUser = auth.currentUser;
 
-	// const removeImage = async () => {
-	// 	const uId = selectedImg.id;
-	// 	console.log(uId);
-	// 	const imageRef = ref(storage, `users/${currUser.displayName}-${currUser.uid}/gallery/${uId}`);
+	const removeImage = async () => {
+		const uId = selectedImg.id;
+		console.log(uId);
+		const imageRef = ref(storage, `users/${currUser.displayName}-${currUser.uid}/gallery/${uId}`);
 
-	// 	try {
-	// 		await deleteDoc(doc(db, `users/${currUser.uid}/images/${uId}`));
-	// 		setSelectedImg(null);
-	// 		await deleteObject(imageRef);
-	// 		const filteredImages = images.filter((image) => image.id !== uId);
-	// 		setImages(filteredImages);
-	// 	} catch (err) {
-	// 		console.log(err.message);
-	// 	}
-	// };
+		try {
+			await deleteDoc(doc(db, `users/${currUser.uid}/images/${uId}`));
+			// await deleteObject(imageRef);
+			setSelectedImg(null);
+			const filteredImages = images.filter((image) => image.id !== uId);
+			setImages(filteredImages);
+		} catch (err) {
+			console.log(err.message);
+		}
+	};
 
 	const handleSelect = async (e) => {
 		const selectedImgUrl = e.target.files[0];
@@ -83,7 +83,7 @@ const Gallery = () => {
 			</ul>
 			<div className={selectedImg ? 'Overlay active' : 'Overlay'}>
 				<MdExitToApp className={styles.Exit} onClick={() => setSelectedImg(null)} />
-				{/* <FaTrash className={styles.Remove} onClick={removeImage} /> */}
+				<FaTrash className={styles.Remove} onClick={removeImage} />
 				<img src={selectedImg && selectedImg.url} alt='selected-img' />
 			</div>
 		</div>
