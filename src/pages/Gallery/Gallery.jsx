@@ -10,39 +10,47 @@ import { MdExitToApp } from 'react-icons/md';
 const Gallery = () => {
 	const [images, setImages] = useState([]);
 	const [selectedImg, setSelectedImg] = useState(null);
-
 	const currUser = auth.currentUser;
 
 	const removeImage = async () => {
-		const uId = selectedImg.id;
-		console.log(uId);
-		const imageRef = ref(storage, `users/${currUser.displayName}-${currUser.uid}/gallery/${uId}`);
-
+		const { id, fileName } = selectedImg;
 		try {
-			await deleteDoc(doc(db, `users/${currUser.uid}/images/${uId}`));
-			// await deleteObject(imageRef);
+			await deleteDoc(doc(db, `users/${currUser.uid}/images/${id}`));
+			const imageRef = ref(
+				storage,
+				`users/${currUser.displayName}-${currUser.uid}/gallery/${fileName}`
+			);
+			await deleteObject(imageRef);
 			setSelectedImg(null);
-			const filteredImages = images.filter((image) => image.id !== uId);
-			setImages(filteredImages);
+			const filteredImages = images.filter((image) => image.name !== fileName && image);
+			setImages([...filteredImages]);
 		} catch (err) {
 			console.log(err.message);
 		}
 	};
 
 	const handleSelect = async (e) => {
-		const selectedImgUrl = e.target.files[0];
-		const imageRef = ref(
-			storage,
-			`users/${currUser.displayName}-${currUser.uid}/gallery/${selectedImgUrl.name}`
-		);
-		await uploadBytes(imageRef, selectedImgUrl);
-		const url = await getDownloadURL(imageRef);
-		setImages(images.concat({ url }));
+		const uploadedImg = e.target.files[0];
+		const alreadyExists = uploadedImg && images.find((img) => img.name === uploadedImg.name);
 
-		try {
-			await addDoc(collection(db, 'users', `${currUser.uid}`, 'images'), { url });
-		} catch (err) {
-			console.log(err);
+		if (!alreadyExists) {
+			const imageRef = ref(
+				storage,
+				`users/${currUser.displayName}-${currUser.uid}/gallery/${uploadedImg.name}`
+			);
+			await uploadBytes(imageRef, uploadedImg);
+			const url = await getDownloadURL(imageRef);
+			setImages([...images, { url, name: uploadedImg.name }]);
+
+			// adding image url and name to the firestore db
+			try {
+				await addDoc(collection(db, 'users', `${currUser.uid}`, 'images'), {
+					url,
+					name: uploadedImg.name,
+				});
+			} catch (err) {
+				console.log(err);
+			}
 		}
 	};
 	useEffect(() => {
@@ -52,7 +60,7 @@ const Gallery = () => {
 			const tempArr = [];
 
 			docs.forEach((doc) => {
-				tempArr.push({ url: doc.data().url, id: doc.id });
+				tempArr.push({ url: doc.data().url, id: doc.id, name: doc.data().name });
 			});
 			setImages(tempArr);
 		};
@@ -75,7 +83,9 @@ const Gallery = () => {
 								<img
 									src={obj.url}
 									alt='gallery-item'
-									onClick={(e) => setSelectedImg({ url: obj.url, id: obj.id })}
+									onClick={(e) => {
+										setSelectedImg({ url: obj.url, id: obj.id, fileName: obj.name });
+									}}
 								/>
 							</li>
 						);
