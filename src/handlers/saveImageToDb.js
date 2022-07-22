@@ -18,10 +18,13 @@ const saveImageToDb = async (event, images, setImages) => {
 		setImages([...images, { url, name: uploadedImg.name }]);
 
 		try {
-			await addDoc(collection(db, 'users', `${currUser.uid}`, 'images'), {
-				url,
-				name: uploadedImg.name,
-			});
+			await addDoc(
+				collection(db, 'users', `${currUser.displayName}-${currUser.uid}`, 'images'),
+				{
+					url,
+					name: uploadedImg.name,
+				}
+			);
 		} catch (err) {
 			console.log(err);
 		}
