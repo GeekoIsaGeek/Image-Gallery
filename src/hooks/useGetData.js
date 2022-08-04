@@ -8,7 +8,10 @@ const useGetData = (setImages) => {
 
 	useEffect(() => {
 		const getImages = async () => {
-			const userImagesRef = await collection(db, `users/${currUser.uid}/images`);
+			const userImagesRef = await collection(
+				db,
+				`users/${currUser.displayName}-${currUser.uid}/images`
+			);
 			const docs = await getDocs(userImagesRef);
 			const tempArr = [];
 
