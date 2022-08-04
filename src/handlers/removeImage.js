@@ -8,7 +8,8 @@ const removeImage = async (selectedImg, setSelectedImg, images, setImages) => {
 	const { id, fileName } = selectedImg;
 
 	try {
-		await deleteDoc(doc(db, `users/${currUser.uid}/images/${id}`));
+		await deleteDoc(doc(db, `users/${currUser.displayName}-${currUser.uid}/images/${id}`));
+		console.log(currUser.displayName);
 		const imageRef = ref(
 			storage,
 			`users/${currUser.displayName}-${currUser.uid}/gallery/${fileName}`
