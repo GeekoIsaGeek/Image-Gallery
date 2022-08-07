@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styles from '../../styles/Registration.module.css';
-import useAuthCtx from '../../store/AuthContext';
-import profilePic from '../../images/User-Icon.jpg';
+import styles from '../styles/Registration.module.css';
+import useAuthCtx from '../store/AuthContext';
+import profilePic from '../images/User-Icon.jpg';
 
 const Registration = () => {
 	const [username, setUsername] = useState('');

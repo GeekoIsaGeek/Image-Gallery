@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import styles from '../../styles/Main.module.css';
+import styles from '../styles/Main.module.css';
 import { Link } from 'react-router-dom';
-import useAuthCtx from '../../store/AuthContext';
+import useAuthCtx from '../store/AuthContext';
 import emailjs from '@emailjs/browser';
 
 const Main = () => {

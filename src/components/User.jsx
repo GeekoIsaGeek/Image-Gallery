@@ -15,11 +15,12 @@ const User = () => {
 				src={avatarUrl || profilePic}
 				className={styles.ProfilePic}
 				alt='profile-pic'
+				onMouseEnter={() => setShow(true)}
 				onClick={() => setShow(!show)}
 			></img>
 			<div className={styles.User}>
 				<h4 className={styles.Username}>{userName || 'user'}</h4>
-				<ul className={!show ? 'Nav' : 'Nav active'}>
+				<ul className={!show ? 'Nav' : 'Nav active'} onMouseLeave={() => setShow(false)}>
 					<li>
 						<Link to='/gallery'>Gallery</Link>
 					</li>

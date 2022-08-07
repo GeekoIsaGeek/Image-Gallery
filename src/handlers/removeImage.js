@@ -8,18 +8,17 @@ const removeImage = async (selectedImg, setSelectedImg, images, setImages) => {
 	const { id, fileName } = selectedImg;
 
 	try {
-		await deleteDoc(doc(db, `users/${currUser.displayName}-${currUser.uid}/images/${id}`));
-		console.log(currUser.displayName);
+		deleteDoc(doc(db, `users/${currUser.displayName}-${currUser.uid}/images/${id}`));
 		const imageRef = ref(
 			storage,
 			`users/${currUser.displayName}-${currUser.uid}/gallery/${fileName}`
 		);
-		await deleteObject(imageRef);
+		deleteObject(imageRef);
 		setSelectedImg(null);
 		const filteredImages = images.filter((image) => image.name !== fileName && image);
 		setImages([...filteredImages]);
 	} catch (err) {
-		console.log(err.message);
+		console.error(err.message);
 	}
 };
 

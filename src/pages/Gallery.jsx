@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import styles from '../../styles/Gallery.module.css';
+import styles from '../styles/Gallery.module.css';
 import { BiImageAdd } from 'react-icons/bi';
 import { FaTrash } from 'react-icons/fa';
 import { MdExitToApp } from 'react-icons/md';
-import useGetData from '../../hooks/useGetData';
-import saveImageToDb from '../../handlers/saveImageToDb';
-import removeImage from '../../handlers/removeImage';
+import useGetData from '../hooks/useGetData';
+import saveImageToDb from '../handlers/saveImageToDb';
+import removeImage from '../handlers/removeImage';
 
 const Gallery = () => {
 	const [images, setImages] = useState([]);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import styles from '../../styles/Login.module.css';
+import styles from '../styles/Login.module.css';
 import { Link, useNavigate } from 'react-router-dom';
-import useAuthCtx from '../../store/AuthContext';
+import useAuthCtx from '../store/AuthContext';
 
 const Login = () => {
 	const [email, setEmail] = useState('');

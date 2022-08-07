@@ -1,12 +1,12 @@
 import './App.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
-import Login from './pages/Login/Login';
-import Registration from './pages/Registration/Registration';
-import Gallery from './pages/Gallery/Gallery';
+import Login from './pages/Login';
+import Registration from './pages/Registration';
+import Gallery from './pages/Gallery';
 import Protected from './components/ProtectedRoutes';
 import Unauthorized from './components/Unauthorized';
-import Main from './pages/Main/Main';
+import Main from './pages/Main';
 
 function App() {
 	return (
