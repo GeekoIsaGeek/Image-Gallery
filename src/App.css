@@ -92,6 +92,7 @@ input[type='file'] button {
 	justify-content: center;
 	align-items: center;
 	background-color: rgba(0, 0, 0, 0.863);
+	backdrop-filter: blur(20px);
 }
 .Overlay img {
 	width: 60vw;
