@@ -11,7 +11,7 @@ const Gallery = () => {
 	const [images, setImages] = useState([]);
 	const [selectedImg, setSelectedImg] = useState(null);
 
-	useGetData(setImages);
+	useGetData(images, setImages);
 
 	return (
 		<div className={styles.Wrapper}>
@@ -19,11 +19,7 @@ const Gallery = () => {
 				<span>
 					<BiImageAdd className={styles.addLogo} />
 				</span>
-				<input
-					type='file'
-					accept='.jpg,.jpeg,.png,.webp'
-					onChange={(e) => saveImageToDb(e, images, setImages)}
-				/>
+				<input type='file' accept='.jpg,.jpeg,.png,.webp' onChange={(e) => saveImageToDb(e, images, setImages)} />
 			</div>
 			<ul className={styles.Gallery}>
 				{images &&

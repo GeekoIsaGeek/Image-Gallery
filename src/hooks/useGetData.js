@@ -3,15 +3,12 @@ import { collection, getDocs } from 'firebase/firestore';
 import { auth } from '../Firebase-config';
 import { db } from '../Firebase-config';
 
-const useGetData = (setImages) => {
+const useGetData = (images, setImages) => {
 	const currUser = auth.currentUser;
 
 	useEffect(() => {
 		const getImages = async () => {
-			const userImagesRef = await collection(
-				db,
-				`users/${currUser.displayName}-${currUser.uid}/images`
-			);
+			const userImagesRef = await collection(db, `users/${currUser.displayName}-${currUser.uid}/images`);
 			const docs = await getDocs(userImagesRef);
 			const tempArr = [];
 
@@ -21,7 +18,7 @@ const useGetData = (setImages) => {
 			setImages(tempArr);
 		};
 		getImages();
-	}, [currUser.uid]);
+	}, [images, currUser.uid]);
 };
 
 export default useGetData;

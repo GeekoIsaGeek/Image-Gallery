@@ -9,10 +9,7 @@ const removeImage = async (selectedImg, setSelectedImg, images, setImages) => {
 
 	try {
 		deleteDoc(doc(db, `users/${currUser.displayName}-${currUser.uid}/images/${id}`));
-		const imageRef = ref(
-			storage,
-			`users/${currUser.displayName}-${currUser.uid}/gallery/${fileName}`
-		);
+		const imageRef = ref(storage, `users/${currUser.displayName}-${currUser.uid}/gallery/${fileName}`);
 		deleteObject(imageRef);
 		setSelectedImg(null);
 		const filteredImages = images.filter((image) => image.name !== fileName && image);
